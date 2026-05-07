@@ -1,0 +1,38 @@
+{
+  "name": "shadowledger",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Serverless correctness, replay safety, and divergence repair for distributed workflows.",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "jest --runInBand",
+    "cdk:synth": "cdk synth -a 'npx ts-node infra/cdk/bin/app.ts'",
+    "seed:inventory": "tsx scripts/seed-inventory.ts",
+    "seed:events": "tsx scripts/seed-events.ts",
+    "rebuild:shadow": "tsx scripts/rebuild-shadow-state.ts",
+    "repair:cycle": "tsx scripts/run-repair-cycle.ts"
+  },
+  "dependencies": {
+    "@aws-sdk/client-cloudwatch": "^3.699.0",
+    "@aws-sdk/client-dynamodb": "^3.699.0",
+    "@aws-sdk/client-eventbridge": "^3.699.0",
+    "@aws-sdk/client-s3": "^3.699.0",
+    "@aws-sdk/client-sqs": "^3.699.0",
+    "@aws-sdk/lib-dynamodb": "^3.699.0",
+    "aws-cdk-lib": "^2.170.0",
+    "constructs": "^10.4.2",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.145",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22.10.1",
+    "aws-cdk": "^2.170.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}

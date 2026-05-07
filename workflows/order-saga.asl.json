@@ -1,0 +1,21 @@
+{
+  "Comment": "ShadowLedger order saga v1",
+  "StartAt": "AuthorizePayment",
+  "States": {
+    "AuthorizePayment": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Next": "ReserveInventory"
+    },
+    "ReserveInventory": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Next": "RequestFulfillment"
+    },
+    "RequestFulfillment": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "End": true
+    }
+  }
+}

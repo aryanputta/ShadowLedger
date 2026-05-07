@@ -1,0 +1,23 @@
+{
+  "Comment": "Phase 2 large replay skeleton",
+  "StartAt": "ReplayPartitions",
+  "States": {
+    "ReplayPartitions": {
+      "Type": "Map",
+      "ItemProcessor": {
+        "ProcessorConfig": {
+          "Mode": "DISTRIBUTED"
+        },
+        "StartAt": "ReplayWorker",
+        "States": {
+          "ReplayWorker": {
+            "Type": "Task",
+            "Resource": "arn:aws:states:::lambda:invoke",
+            "End": true
+          }
+        }
+      },
+      "End": true
+    }
+  }
+}
