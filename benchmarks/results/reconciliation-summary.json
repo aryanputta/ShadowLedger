@@ -1,0 +1,17 @@
+{
+  "config": {
+    "aggregates": 1500,
+    "seed": 4242
+  },
+  "eventsReplayed": 9527,
+  "driftDetectionRate": "93.5%",
+  "autoRepairRate": "80.4%",
+  "falsePositiveRate": "0.00%",
+  "counts": {
+    "driftedTotal": 600,
+    "driftedDetected": 561,
+    "findingsTotal": 708,
+    "findingsAutoRepaired": 569,
+    "falsePositives": 0
+  }
+}

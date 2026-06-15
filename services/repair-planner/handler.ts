@@ -4,7 +4,8 @@ import { DivergenceFinding, RepairPlan } from "@shared/events";
 export const toRepairPlan = (finding: DivergenceFinding): RepairPlan => {
   const lowRiskReplay =
     finding.finding_type === "ORDER_STUCK_AFTER_PAYMENT" ||
-    finding.finding_type === "MISSING_TERMINAL_STATE";
+    finding.finding_type === "MISSING_TERMINAL_STATE" ||
+    finding.finding_type === "STATE_FIELD_DIVERGENCE";
   const lowRiskRelease = finding.finding_type === "INVENTORY_LEAK";
 
   const repairType = lowRiskRelease

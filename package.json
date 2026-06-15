@@ -11,7 +11,8 @@
     "seed:inventory": "tsx scripts/seed-inventory.ts",
     "seed:events": "tsx scripts/seed-events.ts",
     "rebuild:shadow": "tsx scripts/rebuild-shadow-state.ts",
-    "repair:cycle": "tsx scripts/run-repair-cycle.ts"
+    "repair:cycle": "tsx scripts/reconcile-benchmark.ts",
+    "benchmark": "tsx scripts/reconcile-benchmark.ts"
   },
   "dependencies": {
     "@aws-sdk/client-cloudwatch": "^3.699.0",

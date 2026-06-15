@@ -143,5 +143,33 @@ export const detectDivergences = (
     );
   }
 
+  // Core reconciliation: compare each field the ledger expects against the
+  // actual production state. A mismatch that no specific rule above already
+  // explained means the production state drifted from the event ledger, most
+  // often because an event was lost or applied out of band. Only emit when no
+  // higher-signal finding already covers this aggregate to avoid double-counting.
+  if (findings.length === 0) {
+    const fieldMismatch =
+      shadow.expected_inventory_status !== actual.inventory_status ||
+      shadow.expected_payment_status !== actual.payment_status ||
+      shadow.expected_fulfillment_status !== actual.fulfillment_status ||
+      shadow.expected_order_status !== actual.order_status;
+    if (fieldMismatch) {
+      findings.push(
+        finding(
+          actual.order_id,
+          "STATE_FIELD_DIVERGENCE",
+          "MEDIUM",
+          shadow,
+          actual,
+          "production state diverges from the event ledger, likely a lost or out-of-band event",
+          "replay the ledger to reconcile the diverged field",
+          "LOW",
+          false,
+        ),
+      );
+    }
+  }
+
   return findings;
 };

@@ -83,6 +83,7 @@ export interface DivergenceFinding {
     | "DUPLICATE_SHIPMENT"
     | "OUT_OF_ORDER_WORKFLOW"
     | "MISSING_TERMINAL_STATE"
+    | "STATE_FIELD_DIVERGENCE"
     | "IDEMPOTENCY_COLLISION";
   severity: "LOW" | "MEDIUM" | "HIGH";
   aggregate_id: string;
